@@ -1,5 +1,13 @@
 https://hub.docker.com/r/mikenye/youtube-dl
 
+# Just creating an alias 
+alias yt-dl='docker run \
+                  --rm -i \
+                  -e PGID=$(id -g) \
+                  -e PUID=$(id -u) \
+                  -v "$(pwd)":/workdir:rw \
+                  mikenye/youtube-dl'
+
 # Move file from directory (also download)
 docker run \
     --rm -i \
