@@ -1,0 +1,10 @@
+https://hub.docker.com/r/mikenye/youtube-dl
+
+# Move file from directory (also download)
+docker run \
+    --rm -i \
+    -e PGID=$(id -g) \
+    -e PUID=$(id -u) \
+    -v //workspace/spark_docker_vlerick/docker_exercises/exercise_3:/workdir:rw \
+    -v /path/to/youtube-dl.conf:/etc/youtube-dl.conf:ro \
+    mikenye/youtube-dl https://www.youtube.com/watch?v=psmZRfiXYnE
