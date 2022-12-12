@@ -8,7 +8,6 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn import metrics
 
-
 # Create a SparkSession object
 BUCKET = "dmacademy-course-assets"
 KEY1 = "vlerick/pre_release.csv"
