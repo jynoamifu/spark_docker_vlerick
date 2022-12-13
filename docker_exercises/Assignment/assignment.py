@@ -31,8 +31,6 @@ target.show()
 variables = variables.toPandas()
 target = target.toPandas()
 
-print(variables.dtypes)
-print(target.dtypes)
 
 ###### ML Model #######
 
@@ -44,6 +42,14 @@ print(df_raw.head())
 df_raw = df_raw.drop(["num_critic_for_reviews" , "gross", "num_user_for_reviews", 
                       "imdb_score", "movie_facebook_likes"], axis = 1)
 df_prep = df_raw
+
+df_prep['duration'] = df_prep['duration'].astype('float')
+df_prep['director_facebook_likes'] = df_prep['director_facebook_likes'].astype('float')
+df_prep['actor_3_facebook_likes'] = df_prep['actor_3_facebook_likes'].astype('float')
+df_prep['actor_1_facebook_likes'] = df_prep['actor_1_facebook_likes'].astype('float')
+df_prep['cast_total_facebook_likes'] = df_prep['cast_total_facebook_likes'].astype('float')
+df_prep['budget'] = df_prep['budget'].astype('float')
+df_prep['actor_2_facebook_likes'] = df_prep['actor_2_facebook_likes'].astype('float')
 
 print(df_prep.dtypes)
 
@@ -69,11 +75,7 @@ print(len(df_prep[df_prep.duration < 65]))
 print(len(df_prep[df_prep.duration > 155]))
 
 # Replace the outliers for the variable duration with the median value
-for row in df_prep["duration"]:
-    if df_prep["duration"] < 65 or df_prep["duration"] > 155:
-        df_prep["duration"] = df_prep["duration"].median
-    else:
-        df_prep.duration = df_prep.duration 
+df_prep["duration"] = df_prep["duration"].apply(lambda x : df_prep.duration.median() if x < 65 or x > 155 else x)
 
 print(len(df_prep[df_prep.duration < 65]))
 print(len(df_prep[df_prep.duration > 155]))
