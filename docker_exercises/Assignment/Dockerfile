@@ -1,4 +1,4 @@
-FROM python: 3.8.13
+FROM python:3.8.13
 
 # Install dependencies: do this first
 RUN apt-get update && \
@@ -16,7 +16,6 @@ COPY . /repo
 
 # Install pip requirements
 RUN python -m pip install -r requirements.txt
-RUN apt-get update && apt-get install -y spark 
 
 # Define command to run 
 EXPOSE 8080
